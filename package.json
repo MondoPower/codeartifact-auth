@@ -61,7 +61,6 @@
     "@types/node": "^16.4.10",
     "aws-sdk": "^2.960.0",
     "install": "^0.13.0",
-    "npm": "^7.20.5",
     "npm-audit-resolver": "^3.0.0-4"
   }
 }
