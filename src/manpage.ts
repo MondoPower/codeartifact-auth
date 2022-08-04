@@ -6,6 +6,7 @@ CodeArtifact Command Line Arguments
 -r --repository                 The name of the repository e.g. OrganisationNamePackages
 -s --scope                      The npm scope for the private package e.g. @OrganisationName
 -p --region                     The region the codeArtifact repository is hosted in e.g. us-east-1
+-m --packageType                The package type to set. Currently supports npm or poetry
 -h --help                       display help page
 
 Long options may be passed with a single dash.

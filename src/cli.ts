@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import {main} from './index'
-import {awsCodeArtifactConfig} from 'types'
+import {awsCodeArtifactConfig, packageTypes} from 'types'
+import {parsePackageType} from './helpers'
 import manpage from './manpage'
 
 enum CmdTypeArgs {
@@ -9,6 +10,7 @@ enum CmdTypeArgs {
   scope = 'scope',
   region = 'region',
   accountId = 'accountId',
+  packageType = 'packageType',
   help = 'help',
 }
 
@@ -18,6 +20,7 @@ const cmdArgs = {
   [CmdTypeArgs.scope]: ['-s', '--scope'],
   [CmdTypeArgs.region]: ['-p', '--region'],
   [CmdTypeArgs.accountId]: ['-a', '--accountId'],
+  [CmdTypeArgs.packageType]: ['-m', '--packageType'],
   [CmdTypeArgs.help]: ['-h', '--help']
 }
 
@@ -27,7 +30,21 @@ interface CommandLineArguments {
   scope: string | undefined
   region: string | undefined
   accountId: string | undefined
+  packageType: packageTypes | undefined
   help: string | undefined
+}
+
+function setPackageType(input: string): packageTypes {
+  try {
+    return parsePackageType(input)
+  } catch (error) {
+    if (error instanceof Error)
+      throw exitMessage(error.message, ExitCode.SyntaxError)
+    else
+      console.error('Unexpected error', error)
+    throw exitMessage('Unknown error when setting packageType', ExitCode.unknownError)
+  }
+
 }
 
 // eslint-disable-next-line complexity
@@ -42,6 +59,8 @@ function assignCommandArg(argType: string, value: string, commandArguments: Comm
     return commandArguments.region = value
   if (argType === CmdTypeArgs.repository)
     return commandArguments.repository = value
+  if (argType === CmdTypeArgs.packageType)
+    return setPackageType(value)
   if (argType === CmdTypeArgs.scope)
     return commandArguments.scope = value
 }
@@ -66,6 +85,7 @@ function extractArgument(args: string[]): CommandLineArguments {
     scope: undefined,
     region: undefined,
     accountId: undefined,
+    packageType: undefined,
     help: undefined,
   }
   Object.entries(cmdArgs).map(([key, cmdArgTypes]) => {
@@ -79,7 +99,8 @@ function extractArgument(args: string[]): CommandLineArguments {
 
 enum ExitCode {
   Successful = 0,
-  SyntaxError = 1
+  SyntaxError = 1,
+  unknownError = 4
 }
 
 function exitMessage(message: string, exitCode: ExitCode): void {
@@ -96,7 +117,7 @@ const isUsingCmdArgs = (args: CommandLineArguments): boolean => Object.values(ar
 
 // eslint-disable-next-line complexity
 function getCmdArgs(args: CommandLineArguments): awsCodeArtifactConfig {
-  const {accountId, domain, region, repository, scope} = args
+  const {accountId, domain, region, repository, scope, packageType} = args
   if (!accountId)
     throw exitMessage(`Missing ${CmdTypeArgs.accountId}. Please use ${cmdArgs.accountId}`, ExitCode.SyntaxError)
 
@@ -112,7 +133,10 @@ function getCmdArgs(args: CommandLineArguments): awsCodeArtifactConfig {
   if (!scope)
     throw exitMessage(`Missing ${CmdTypeArgs.scope} Please use ${cmdArgs.scope}`, ExitCode.SyntaxError)
 
-  return {accountId, domain, region, repository, scope}
+  if (!packageType)
+    throw exitMessage(`Missing ${CmdTypeArgs.packageType} Please use ${cmdArgs.packageType}`, ExitCode.SyntaxError)
+
+  return {accountId, domain, region, repository, scope, packageType}
 }
 
 function getAwsConfig(args: CommandLineArguments): awsCodeArtifactConfig {

@@ -16,6 +16,9 @@ inputs:
   scope: #String
     description: 'NPM Scope'
     required: true
+  packageType: #String
+    description: 'PackageType'
+    required: true
 outputs:
   status: # success/failure
     description: 'If we succeeded or failed to login'

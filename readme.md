@@ -19,6 +19,8 @@ The below action will setup npm with the codeartifact registry scoped to the ref
     scope: "<Package Scope"
     region: "<AWS Region>"
     accountId: "<AWS AccountId>"
+    packageType: "<Package Type>" #Supports poetry or npm as arguments
+
 ```
 
 ### CLI
@@ -38,7 +40,8 @@ Add the following to package.json:
       "repository": "<repository-in-codeartifact>",
       "scope": "<scope>",
       "region": "<aws-region>",
-      "accountId": "<aws-account-id>"
+      "accountId": "<aws-account-id>",
+      "packageType": "<Package Type>" //Supports poetry or npm as arguments
     }
   }
 }
@@ -60,6 +63,7 @@ CodeArtifact Command Line Arguments
 -r --repository                 The name of the repository e.g. OrganisationNamePackages
 -s --scope                      The npm scope for the private package e.g. @OrganisationName
 -p --region                     The region the codeArtifact repository is hosted in e.g. us-east-1
+-m --packageType                The package type to set. Currently supports npm or poetry
 -h --help                       display help page
 
 Long options may be passed with a single dash.

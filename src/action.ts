@@ -1,5 +1,6 @@
 import {getInput, setFailed} from '@actions/core'
 import {main} from './index'
+import {parsePackageType} from './helpers'
 
 async function codeArtifactGithubAction(): Promise<void> {
   try {
@@ -8,16 +9,24 @@ async function codeArtifactGithubAction(): Promise<void> {
     const region = getInput('region')
     const repository = getInput('repository')
     const scope = getInput('scope')
+    const packageType = parsePackageType(getInput('packageType'))
+
     console.log(
       domain,
       accountId,
       region,
       repository,
-      scope
+      scope,
+      packageType
     )
-    main({domain, accountId, region, repository, scope})
+    main({domain, accountId, region, repository, scope, packageType})
   } catch (error) {
-    setFailed(error.message)
+    if (error instanceof Error)
+      setFailed(error.message)
+    else {
+      console.error(error)
+      setFailed('Unknown error')
+    }
   }
 }
 

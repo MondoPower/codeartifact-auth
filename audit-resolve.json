@@ -34,6 +34,31 @@
       "decision": "ignore",
       "madeAt": 1657199866576,
       "expiresAt": 1659791863144
+    },
+    "1081348|eslint>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1659583446463,
+      "expiresAt": 1662175444104
+    },
+    "1081348|eslint>table>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1659583446463,
+      "expiresAt": 1662175444104
+    },
+    "1081348|eslint>table>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1659583446463,
+      "expiresAt": 1662175444104
+    },
+    "1081348|mocha>yargs>cliui>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1659583446463,
+      "expiresAt": 1662175444104
+    },
+    "1081348|mocha>yargs>cliui>wrap-ansi>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1659583446463,
+      "expiresAt": 1662175444104
     }
   },
   "rules": {},
