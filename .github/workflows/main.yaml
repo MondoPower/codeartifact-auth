@@ -1,6 +1,12 @@
-  
+
 name: mondo-eslint-config
 on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
   push:
     branches:
       - main
@@ -9,36 +15,38 @@ on:
       - '**.md'
 jobs:
   verify:
+    name: Verify build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 18
       - run: npm --silent ci --quiet --no-progress --no-audit --unsafe-perm --loglevel warn
-      - run: 'npm run audit'
-      - run: 'npm run lint'
-  publish: 
+      - run: npm run audit
+      - run: npm run lint
+  publish:
+    name: Publish to NPM
     runs-on: ubuntu-latest
+    if: github.repository == 'MondoPower/codeartifact-auth' && !(github.event_name == 'pull_request')
     needs: verify
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 18
       - run: npm --silent ci --quiet --no-progress --no-audit --unsafe-perm --loglevel warn
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
-
-  slackNotification:
+  slack:
+    name: Notify Slack on failure
     needs: publish
-    if: failure()
-    name: CodeArtifact Auth CI Notification
+    if: github.repository == 'MondoPower/codeartifact-auth' && !(github.event_name == 'pull_request') && failure()
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:

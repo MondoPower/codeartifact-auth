@@ -68,9 +68,12 @@ CodeArtifact Command Line Arguments
 
 Long options may be passed with a single dash.
 ```
+
 Example
 
+```bash
 codeartifact-auth --accountId 290556015539 --domain mondo-artifacts --region ap-southeast-2 -r MondoNPMPackages -s @mondo
+```
 
 #### Windows Users
 
@@ -88,12 +91,11 @@ Command usage on windows:
 
 ```codeartifact-auth.cmd```
 
-
 ### Testing CLI locally
+
 - npm link
 - build
 - run ```codeartifact-auth```
-
 
 ### Potential extensions/improvements
 

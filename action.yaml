@@ -22,6 +22,6 @@ inputs:
 outputs:
   status: # success/failure
     description: 'If we succeeded or failed to login'
-runs: 
-  using: node12
+runs:
+  using: node18
   main: './action/action.js'
