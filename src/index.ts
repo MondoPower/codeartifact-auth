@@ -83,13 +83,14 @@ async function setNpmConfig(config: awsCodeArtifactConfig): Promise<void> {
   const codeartifactUrl = `${domain}-${accountId}.d.codeartifact.${region}.amazonaws.com/npm/${repository}/`
   const endpoint = `//${codeartifactUrl}`
   const scopeTarget = getScopeTarget(scope)
+  const isV8 = !npmVersionIsLowerThan(8)
 
-  execSync(`npm config set ${scopeTarget} https://${codeartifactUrl}`)
-  execSync(`npm config set ${endpoint}:_authToken=${token}`)
+  execSync(`npm config ${isV8 ? '-L project' : ''} set ${scopeTarget} https://${codeartifactUrl}`)
+  execSync(`npm config ${isV8 ? '-L project' : ''} set ${endpoint}:_authToken=${token}`)
 
   if (npmVersionIsLowerThan(9)) {
     console.log('Legacy version of NPM detected setting always-auth')
-    execSync(`npm config set ${endpoint}:always-auth=true`)
+    execSync(`npm config ${isV8 ? '-L project' : ''} set ${endpoint}:always-auth=true`)
   }
   console.log(`npm credentials configured for endpoint: ${codeartifactUrl}`)
 }
