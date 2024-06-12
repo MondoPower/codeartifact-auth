@@ -59,6 +59,46 @@
       "decision": "ignore",
       "madeAt": 1659583446463,
       "expiresAt": 1662175444104
+    },
+    "1096886|@babel/traverse": {
+      "decision": "ignore",
+      "madeAt": 1718170828172,
+      "expiresAt": 1720762813519
+    },
+    "1096693|aws-sdk>xml2js": {
+      "decision": "ignore",
+      "madeAt": 1718170829031,
+      "expiresAt": 1720762813519
+    },
+    "1097496|braces": {
+      "decision": "ignore",
+      "madeAt": 1718170830827,
+      "expiresAt": 1720762813519
+    },
+    "1094574|get-func-name": {
+      "decision": "ignore",
+      "madeAt": 1718170831735,
+      "expiresAt": 1720762813519
+    },
+    "1096482|semver": {
+      "decision": "ignore",
+      "madeAt": 1718170832735,
+      "expiresAt": 1720762813519
+    },
+    "1096483|semver": {
+      "decision": "ignore",
+      "madeAt": 1718170833819,
+      "expiresAt": 1720762813519
+    },
+    "1096484|semver": {
+      "decision": "ignore",
+      "madeAt": 1718170834835,
+      "expiresAt": 1720762813519
+    },
+    "1095091|word-wrap": {
+      "decision": "ignore",
+      "madeAt": 1718170835839,
+      "expiresAt": 1720762813519
     }
   },
   "rules": {},
