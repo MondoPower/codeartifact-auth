@@ -60,6 +60,7 @@ function validateAWSConfigVariables(): void {
 function npmVersionIsLowerThan(version: number): boolean {
   const npmVersion = execSync('npm --version').toString()
   const npmMajorVersion = Number(npmVersion.split('.')[0])
+  console.log(`npm major verions: ${npmMajorVersion}`)
 
   if (isNaN(npmMajorVersion)) {
     console.error(`Invalid version returned: ${npmVersion}`)
