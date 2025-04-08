@@ -99,6 +99,71 @@
       "decision": "ignore",
       "madeAt": 1718170835839,
       "expiresAt": 1720762813519
+    },
+    "1102898|@actions/github>@octokit/core>@octokit/graphql>@octokit/request>@octokit/request-error>@octokit/plugin-paginate-rest": {
+      "decision": "ignore",
+      "madeAt": 1744075348084,
+      "expiresAt": 1746667334478
+    },
+    "1100563|cross-spawn": {
+      "decision": "ignore",
+      "madeAt": 1744075349176,
+      "expiresAt": 1746667334478
+    },
+    "1102341|esbuild": {
+      "decision": "ignore",
+      "madeAt": 1744075350155,
+      "expiresAt": 1746667334478
+    },
+    "1098681|micromatch": {
+      "decision": "ignore",
+      "madeAt": 1744075351055,
+      "expiresAt": 1746667334478
+    },
+    "1102832|mocha>serialize-javascript": {
+      "decision": "ignore",
+      "madeAt": 1744075352033,
+      "expiresAt": 1746667334478
+    },
+    "1101846|path-to-regexp": {
+      "decision": "ignore",
+      "madeAt": 1744075352967,
+      "expiresAt": 1746667334478
+    },
+    "1101610|undici": {
+      "decision": "ignore",
+      "madeAt": 1744075353958,
+      "expiresAt": 1746667334478
+    },
+    "1102256|@actions/github>@octokit/core>@octokit/graphql>@octokit/request>@octokit/request-error": {
+      "decision": "ignore",
+      "madeAt": 1744075363318,
+      "expiresAt": 1746667355465
+    },
+    "1102256|@octokit/core>@octokit/graphql>@octokit/request>@octokit/request-error": {
+      "decision": "ignore",
+      "madeAt": 1744075363318,
+      "expiresAt": 1746667355465
+    },
+    "1102256|@octokit/graphql>@octokit/request>@octokit/request-error": {
+      "decision": "ignore",
+      "madeAt": 1744075363318,
+      "expiresAt": 1746667355465
+    },
+    "1102896|@actions/github>@octokit/core>@octokit/graphql>@octokit/request>@octokit/request-error": {
+      "decision": "ignore",
+      "madeAt": 1744075364982,
+      "expiresAt": 1746667355465
+    },
+    "1102896|@octokit/core>@octokit/graphql>@octokit/request>@octokit/request-error": {
+      "decision": "ignore",
+      "madeAt": 1744075364982,
+      "expiresAt": 1746667355465
+    },
+    "1102896|@octokit/graphql>@octokit/request>@octokit/request-error": {
+      "decision": "ignore",
+      "madeAt": 1744075364982,
+      "expiresAt": 1746667355465
     }
   },
   "rules": {},
