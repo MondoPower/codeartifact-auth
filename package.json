@@ -17,6 +17,7 @@
     "lint": "eslint .",
     "audit": "check-audit",
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "audit-resolve": "resolve-audit",
     "clean": "ts-node ./scripts/clean.ts",
     "esbuild:action": "npm run clean action && ts-node scripts/esbuild.ts action",
     "esbuild:cli": "npm run clean cli && ts-node scripts/esbuild.ts cli",
