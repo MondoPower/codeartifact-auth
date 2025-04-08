@@ -101,6 +101,7 @@ async function setPoetryConfig(config: awsCodeArtifactConfig): Promise<void> {
   const token = await getAuthorizationToken(domain, accountId)
 
   execSync(`poetry config http-basic.mondo "aws" "${token}"`)
+  execSync(`poetry config http-basic.mondo-build "aws" "${token}"`)
 
   console.log('Set codeartifact credentials for poetry')
 
