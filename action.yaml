@@ -23,5 +23,5 @@ outputs:
   status: # success/failure
     description: 'If we succeeded or failed to login'
 runs:
-  using: node16
+  using: node20
   main: './action/action.js'
