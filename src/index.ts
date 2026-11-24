@@ -1,4 +1,4 @@
-import CodeArtifact from 'aws-sdk/clients/codeartifact'
+import {CodeartifactClient, GetAuthorizationTokenCommand} from '@aws-sdk/client-codeartifact'
 import {execSync} from 'child_process'
 import {awsCodeArtifactConfig, packageTypes} from './types'
 
@@ -35,12 +35,12 @@ function parseConfig(config: awsCodeArtifactConfig): awsCodeArtifactConfig {
 }
 
 async function getAuthorizationToken(domain: string, accountId: string): Promise<string> {
-  const codeArtifact = new CodeArtifact()
+  const codeArtifact = new CodeartifactClient({})
   const params = {
     domain,
     domainOwner: accountId,
   }
-  const token = await codeArtifact.getAuthorizationToken(params).promise().catch(e => errorHandler(e))
+  const token = await codeArtifact.send(new GetAuthorizationTokenCommand(params)).catch(e => errorHandler(e))
   if (token?.authorizationToken === undefined)
     throw errorHandler('Failed to retrieve auth token')
   return token.authorizationToken
