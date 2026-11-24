@@ -58,9 +58,15 @@
   "dependencies": {
     "@actions/core": "^3.0.1",
     "@actions/github": "^9.1.1",
+    "@aws-sdk/client-codeartifact": "^3.1176.0",
     "@types/node": "^22.20.5",
-    "aws-sdk": "^2.1188.0",
     "install": "^0.13.0",
     "npm-audit-resolver": "^3.0.0-9"
+  },
+  "overrides": {
+    "mocha": {
+      "glob": "^14.0.6",
+      "minimatch": "^11.0.9"
+    }
   }
 }
